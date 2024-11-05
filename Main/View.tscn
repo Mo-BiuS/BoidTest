@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfrghdk71bdl0"]
+
+[ext_resource type="FontFile" uid="uid://diuvpatsfr3j4" path="res://Ressource/FSEX300.ttf" id="1_unbfm"]
+
+[node name="View" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 24
+text = "Size"
+
+[node name="SizeBox" type="SpinBox" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+max_value = 128.0
+step = 0.0
+value = 24.0
+alignment = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 24
+text = "Area"
+
+[node name="AreaBox" type="SpinBox" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+max_value = 256.0
+step = 0.0
+value = 64.0
+alignment = 2
