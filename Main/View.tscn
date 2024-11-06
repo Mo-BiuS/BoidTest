@@ -1,48 +1,128 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfrghdk71bdl0"]
+[gd_scene load_steps=5 format=3 uid="uid://cfrghdk71bdl0"]
 
+[ext_resource type="Script" path="res://Main/View.gd" id="1_8158h"]
 [ext_resource type="FontFile" uid="uid://diuvpatsfr3j4" path="res://Ressource/FSEX300.ttf" id="1_unbfm"]
 
-[node name="View" type="CanvasLayer"]
+[sub_resource type="Theme" id="Theme_mf2f6"]
+default_font = ExtResource("1_unbfm")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxomp"]
+border_width_top = 4
+
+[node name="View" type="CanvasLayer"]
+script = ExtResource("1_8158h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+[node name="ShowHide" type="Button" parent="VBoxContainer/PanelContainer2/MarginContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "Show / Hide Menu"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_unbfm")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "Size"
 
-[node name="SizeBox" type="SpinBox" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="SizeBox" type="SpinBox" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme = SubResource("Theme_mf2f6")
 max_value = 128.0
-step = 0.0
 value = 24.0
 alignment = 2
 
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_unbfm")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "Area"
 
-[node name="AreaBox" type="SpinBox" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AreaBox" type="SpinBox" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-max_value = 256.0
-step = 0.0
+theme = SubResource("Theme_mf2f6")
+max_value = 1024.0
 value = 64.0
 alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 16
+text = "Speed"
+
+[node name="SpeedBox" type="SpinBox" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mf2f6")
+max_value = 1024.0
+value = 128.0
+alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_wxomp")
+
+[node name="GridContainer2" type="GridContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 16
+text = "Rotation"
+
+[node name="RotationCoefBox" type="SpinBox" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_mf2f6")
+max_value = 8.0
+step = 0.01
+value = 0.32
+alignment = 2
+
+[connection signal="toggled" from="VBoxContainer/PanelContainer2/MarginContainer/ShowHide" to="." method="_on_show_hide_toggled"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SizeBox" to="." method="_on_size_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/AreaBox" to="." method="_on_area_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SpeedBox" to="." method="_on_speed_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2/RotationCoefBox" to="." method="_on_rotation_coef_box_value_changed"]

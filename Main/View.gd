@@ -1,11 +1,23 @@
 extends CanvasLayer
 
+@onready var panel:PanelContainer = $VBoxContainer/PanelContainer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+signal sizeChanged(value:float)
+signal areaChanged(value:float)
+signal speedChanged(value:float)
 
+signal rotationCoefChanged(value:float)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_show_hide_toggled(toggled_on: bool) -> void:
+	if(toggled_on):panel.show()
+	else:panel.hide()
+
+func _on_size_box_value_changed(value: float) -> void:
+	sizeChanged.emit(value)
+func _on_area_box_value_changed(value: float) -> void:
+	areaChanged.emit(value)
+func _on_speed_box_value_changed(value: float) -> void:
+	speedChanged.emit(value)
+
+func _on_rotation_coef_box_value_changed(value: float) -> void:
+	rotationCoefChanged.emit(value)

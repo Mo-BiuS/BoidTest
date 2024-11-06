@@ -4,13 +4,13 @@ extends Node2D
 @onready var view:CanvasLayer = $View
 
 var boidList:Array[Boid]
-const N_BOID = 128
+const N_BOID = 256
 
 func _ready() -> void:
 	for i in N_BOID:
 		var boid:Boid = Boid.new()
 		boid.position = Vector2(randf_range(0,1024),randf_range(0,1024))
-		boid.rotate(randf_range(0,PI*2))
+		boid.rotate(randf_range(-PI,PI))
 		boidList.append(boid)
 		add_child(boid)
 
@@ -26,3 +26,14 @@ func _process(delta: float) -> void:
 				i.voisins.append(j)
 		i.process(delta)
 		i.queue_redraw()
+
+
+func _on_view_area_changed(value: float) -> void:
+	for i in boidList: i.area = value
+func _on_view_size_changed(value: float) -> void:
+	for i in boidList: i.setSize(value)
+func _on_view_speed_changed(value: float) -> void:
+	for i in boidList: i.speed = value
+
+func _on_view_rotation_coef_changed(value: float) -> void:
+	for i in boidList: i.rotationSpeedCoef = value
