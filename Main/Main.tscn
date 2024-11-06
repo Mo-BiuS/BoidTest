@@ -11,6 +11,7 @@ script = ExtResource("1_uqqrk")
 [node name="View" parent="." instance=ExtResource("2_740rf")]
 
 [connection signal="areaChanged" from="View" to="." method="_on_view_area_changed"]
+[connection signal="cohesionCoefChanged" from="View" to="." method="_on_view_cohesion_coef_changed"]
 [connection signal="rotationCoefChanged" from="View" to="." method="_on_view_rotation_coef_changed"]
 [connection signal="separationCoefChanged" from="View" to="." method="_on_view_separation_coef_changed"]
 [connection signal="sizeChanged" from="View" to="." method="_on_view_size_changed"]

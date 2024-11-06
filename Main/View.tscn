@@ -134,9 +134,25 @@ max_value = 512.0
 value = 128.0
 alignment = 2
 
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unbfm")
+theme_override_font_sizes/font_size = 16
+text = "Cohesion"
+
+[node name="CohesionCoefBox3" type="SpinBox" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_mf2f6")
+max_value = 8.0
+step = 0.01
+page = 2.0
+value = 6.0
+alignment = 2
+
 [connection signal="toggled" from="VBoxContainer/PanelContainer2/MarginContainer/ShowHide" to="." method="_on_show_hide_toggled"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SizeBox" to="." method="_on_size_box_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/AreaBox" to="." method="_on_area_box_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SpeedBox" to="." method="_on_speed_box_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2/RotationCoefBox" to="." method="_on_rotation_coef_box_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2/SeparationCoefBox2" to="." method="_on_separation_coef_box_2_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer2/CohesionCoefBox3" to="." method="_on_cohesion_coef_box_3_value_changed"]

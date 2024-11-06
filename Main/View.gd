@@ -8,6 +8,7 @@ signal speedChanged(value:float)
 
 signal rotationCoefChanged(value:float)
 signal separationCoefChanged(value:float)
+signal cohesionCoefChanged(value:float)
 
 func _on_show_hide_toggled(toggled_on: bool) -> void:
 	if(toggled_on):panel.show()
@@ -24,3 +25,5 @@ func _on_rotation_coef_box_value_changed(value: float) -> void:
 	rotationCoefChanged.emit(value)
 func _on_separation_coef_box_2_value_changed(value: float) -> void:
 	separationCoefChanged.emit(value)
+func _on_cohesion_coef_box_3_value_changed(value: float) -> void:
+	cohesionCoefChanged.emit(value)
