@@ -12,5 +12,6 @@ script = ExtResource("1_uqqrk")
 
 [connection signal="areaChanged" from="View" to="." method="_on_view_area_changed"]
 [connection signal="rotationCoefChanged" from="View" to="." method="_on_view_rotation_coef_changed"]
+[connection signal="separationCoefChanged" from="View" to="." method="_on_view_separation_coef_changed"]
 [connection signal="sizeChanged" from="View" to="." method="_on_view_size_changed"]
 [connection signal="speedChanged" from="View" to="." method="_on_view_speed_changed"]

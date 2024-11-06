@@ -9,6 +9,7 @@ var color:Color
 
 var colorChangeCoef:float = .08
 var rotationSpeedCoef:float = .32
+var separationSpeedCoef:float = 128
 
 var packedVector:PackedVector2Array
 
@@ -25,6 +26,7 @@ func _draw() -> void:
 func process(delta:float) -> void:
 	calcColor(delta)
 	calcRotation(delta)
+	calcSeparation(delta)
 	
 	moveForward(delta)
 
@@ -72,6 +74,14 @@ func calcRotation(delta:float)->void:
 	
 	if(rotation > PI*2):rotation-=PI-2
 	if(rotation < -PI*2):rotation+=PI-2
+
+func calcSeparation(delta):
+	var steer:Vector2 = Vector2(0,0);
+	for i in voisins: 
+		var diff = position - i.position
+		steer+=diff.normalized() / position.distance_to(i.position)
+	if(steer!=Vector2(0,0)):steer /= voisins.size()
+	position+=steer*separationSpeedCoef
 
 func moveForward(delta):
 	position.x += sin(rotation) * delta * speed;

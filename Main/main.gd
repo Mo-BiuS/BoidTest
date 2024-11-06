@@ -37,3 +37,5 @@ func _on_view_speed_changed(value: float) -> void:
 
 func _on_view_rotation_coef_changed(value: float) -> void:
 	for i in boidList: i.rotationSpeedCoef = value
+func _on_view_separation_coef_changed(value: float) -> void:
+	for i in boidList: i.separationSpeedCoef = value
